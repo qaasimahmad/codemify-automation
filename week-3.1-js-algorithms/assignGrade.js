@@ -18,5 +18,3 @@ function assignGrade(score) {
     }
     return grade;
 }
-
-console.log(assignGrade(101));
