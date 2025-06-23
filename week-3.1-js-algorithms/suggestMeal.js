@@ -15,5 +15,3 @@ function suggestMeal(time, diet) {
   
     return constants.getMeals(timeOfDay, dietType);
   }
-
-  console.log(suggestMeal("morning", "vegan"));
