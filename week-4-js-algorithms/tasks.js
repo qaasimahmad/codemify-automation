@@ -107,7 +107,7 @@ function factorial(number){
     }
 
     if(number < 0){
-        return "Invalid input; unput muyst be more than 0"
+        return "Invalid input; input must be more than 0"
     }
 
     if(number === 0 || number === 1){
