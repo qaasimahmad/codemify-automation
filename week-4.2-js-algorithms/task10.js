@@ -11,7 +11,7 @@ function mergeArrays(randomList1, randomList2){
     const newList = [...randomList1, ...randomList2];
     return newList;
 
-    - Challenge: Not ideal if array is large, it will be keeping a copy of the arrays in memory 
+    - Challenge: Not ideal if array is large, it will keep the new array in memory
     */
 
     // Solution 2: Directly mutates the first array and does not hold a new array in memory
