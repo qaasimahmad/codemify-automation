@@ -92,6 +92,10 @@ function flattenArray(randomList){
 
 
 function findCommonElements(randomList1, randomList2){
+    if(arguments.length < 2){
+        return `Invalid Input! Expected 2 arguments. Found ${arguments.length}`;
+    }
+    
     if(!Array.isArray(randomList1) || !Array.isArray(randomList2)){
         return "Invalid Input! list must be an array"
     }
