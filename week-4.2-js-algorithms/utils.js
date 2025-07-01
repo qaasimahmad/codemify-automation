@@ -56,15 +56,10 @@ const utils = {
         return new Set(list).size === list.length;
     },
     findListsIntersect: (list1, list2)=>{
-        let intersectList = [];
-        for(let i = 0; i < list1.length; i++){
-            for(let j = 0; j < list2.length; j++){
-                if(list1[i] === list2[j]){
-                    intersectList.push(list1[i]);
-                }
-            }
-        }
-        return intersectList;
+        const randomSet1 = new Set([...list1]);
+        const randomSet2 = new Set([...list2]);
+        const intersect = randomSet1.intersection(randomSet2);
+        return [...intersect]; 
     }
 
 }
