@@ -1,9 +1,10 @@
-const utils = require('./utils');
+import { validateNumberList } from './utils';
 
+// eslint-disable-next-line no-unused-vars
 function sumNumbers(numbers){
   if(arguments.length < 1) return 'Invalid input! One param needed. found none';
 
-  const validatorResponse = utils.validateNumberList(numbers);
+  const validatorResponse = validateNumberList(numbers);
 
   if(!validatorResponse.success){
     return validatorResponse.message;

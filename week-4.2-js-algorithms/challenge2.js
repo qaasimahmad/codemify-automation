@@ -1,8 +1,9 @@
-const utils = require('./utils');
+import { validateWordList, isPalindrome } from './utils';
 
 //Find All Palindromes in an Array
 // Write a function to find all the palindromes in an array of strings.
 
+// eslint-disable-next-line no-unused-vars
 function findPalindromes(wordList){
   if(arguments.length < 1){
     return {
@@ -11,13 +12,13 @@ function findPalindromes(wordList){
     }
   }
 
-  const validatorResponse = utils.validateWordList(wordList);
+  const validatorResponse = validateWordList(wordList);
 
   if(!validatorResponse.success){
     return validatorResponse;
   }
 
-  const palindromes = wordList.filter((element)=> utils.isPalindrome(element) === true);
+  const palindromes = wordList.filter((element)=> isPalindrome(element) === true);
 
   return palindromes;
 }

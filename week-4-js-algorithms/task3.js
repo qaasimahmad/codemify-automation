@@ -1,9 +1,10 @@
-const utils = require('./utils');
+import { validateWordList } from './utils';
 
+// eslint-disable-next-line no-unused-vars
 function findDollarStrings(list){
   if(arguments.length < 1) return 'Invalid input! One param needed. found none';
 
-  const validatorResponse = utils.validateWordList(list);
+  const validatorResponse = validateWordList(list);
 
   if(!validatorResponse.success){
     return validatorResponse.message;

@@ -1,6 +1,7 @@
 // Challenge 8: Find the Most Frequent Element
 // Write a function that finds the most frequent element in an array.
 
+// eslint-disable-next-line no-unused-vars
 function findMostFrequentElement(randomList){
   if(!Array.isArray(randomList)){
     return {

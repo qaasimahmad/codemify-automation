@@ -1,6 +1,7 @@
 // Challenge 10: Merge Two Arrays
 // Write a function that takes two arrays and merges them into one.
 
+// eslint-disable-next-line no-unused-vars
 function mergeArrays(randomList1, randomList2){
   if(!Array.isArray(randomList1) || !Array.isArray(randomList2)){
     return {

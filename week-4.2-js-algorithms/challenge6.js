@@ -1,6 +1,7 @@
 // Challenge 6: Find the Longest Substring Without Repeating Characters
 // Write a function that takes a string and returns the length of the longest substring without repeating characters.
 
+// eslint-disable-next-line no-unused-vars
 function findLongestSubstringWithoutRepeats(word){
   if(arguments.length < 1){
     return {

@@ -1,6 +1,7 @@
 // Challenge 9: Find the Intersection of Two Arrays
 // Write a function that takes two arrays and returns an array that is the intersection of the two arrays.
 
+// eslint-disable-next-line no-unused-vars
 function findIntersection(randomList1, randomList2){
   if(!Array.isArray(randomList1) || !Array.isArray(randomList2)){
     return {

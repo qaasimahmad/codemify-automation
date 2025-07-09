@@ -1,6 +1,7 @@
 // Challenge 4: Find Common Elements Between Two Arrays
 // Write a function that takes two arrays and returns an array of elements that are common to both.
 
+// eslint-disable-next-line no-unused-vars
 function findCommonElements(randomList1, randomList2){
   if(arguments.length < 2){
     return {

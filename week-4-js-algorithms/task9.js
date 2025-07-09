@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function findLongestWord(word){
   if(arguments.length < 1) return "invalid input! expected a param. found none";
 

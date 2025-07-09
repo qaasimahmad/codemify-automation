@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 function factorial(number){
   number = Number(number);
 

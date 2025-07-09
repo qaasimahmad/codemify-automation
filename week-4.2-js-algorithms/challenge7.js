@@ -1,6 +1,7 @@
 // Challenge 7: Check If All Elements Are Unique
 // Write a function that checks if all elements in an array are unique.
 
+// eslint-disable-next-line no-unused-vars
 function areAllElementsUnique(randomList){
   if(!Array.isArray(randomList)){
     return {

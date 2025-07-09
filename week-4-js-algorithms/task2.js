@@ -1,5 +1,6 @@
 import { validateNumberList } from './utils';
 
+// eslint-disable-next-line no-unused-vars
 function findLargestNumber(numbers){
   if(arguments.length) return 'Invalid input! One param needed. found none';
 

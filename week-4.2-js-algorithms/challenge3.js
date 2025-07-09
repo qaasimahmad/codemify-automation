@@ -1,6 +1,7 @@
 // Challenge 3: Flatten a Two-Dimensional Array
 // Write a function that takes a two-dimensional array and returns a flattened array.
 
+// eslint-disable-next-line no-unused-vars
 function flattenArray(randomList){
   if(!Array.isArray(randomList)){
     return {

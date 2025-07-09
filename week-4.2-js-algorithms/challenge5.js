@@ -1,6 +1,7 @@
 // Challenge 5: Remove Specific Elements
 // Write a function that takes an array and a value, and returns a new array with all occurrences of that value removed.
 
+// eslint-disable-next-line no-unused-vars
 function removeSpecificElement(randomList, searchParam){
   if(arguments.length < 2){
     return {
