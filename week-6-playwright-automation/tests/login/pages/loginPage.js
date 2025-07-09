@@ -16,6 +16,8 @@ export class LoginPage{
     this.password = page.getByRole('textbox', { name: 'Password' });
     this.signInButton = page.getByRole('button', { name: 'Login' });
     this.pageheading = page.getByText(this.headingText, {exact: true});
+    this.bannerBtn = page.getByRole('banner').getByRole('button');
+    this.menuItem = page.getByRole('menuitem', { name: 'Logout' });
   }
 
 
@@ -52,6 +54,11 @@ export class LoginPage{
     await this.signInButton.click({force: true});
   }
 
+  async signIn(successfulLoginUrl, baseUrl){
+    await this.clickSignInButton();
+    await this.assertPageUrl(successfulLoginUrl, baseUrl);
+  }
+
   async assertProfilePageUrl(baseUrl){
     const pageUrl = `${baseUrl}/dashboard/user/profile`;
 
@@ -70,6 +77,14 @@ export class LoginPage{
     await this.isEmailFieldVisible();
     await this.isPasswordFieldVisible();
     await this.isSignInButtonVisible();
+  }
+
+  async logout(baseUrl){
+    expect(await this.bannerBtn.isVisible()).toBeTruthy();
+    await this.bannerBtn.click();
+    expect(await this.menuItem.isVisible()).toBeTruthy();
+    await this.menuItem.click();
+    await this.assertLoginPageUrl(baseUrl);
   }
 
 }

@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 import { test } from '@playwright/test';
-import { LoginPage } from "../pages/loginPage";
+import { LoginPage } from "./pages/loginPage";
 import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '.env') });

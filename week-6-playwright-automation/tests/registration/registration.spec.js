@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { test, expect } from '@playwright/test';
-import { RegistrationPage } from "../pages/registrationPage";
+import { RegistrationPage } from "./pages/registrationPage";
 
 import dotenv from 'dotenv';
 import path from 'path';
