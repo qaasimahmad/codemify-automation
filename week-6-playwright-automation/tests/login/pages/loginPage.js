@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { expect } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -5,30 +6,30 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 export class LoginPage{
 
-    /**
+  /**
    * @param {import('@playwright/test').Page} page
    */
-    constructor(page){
-        this.page = page;
-        this.headingText = "Sign in to Delek Homes";
-        this.email = page.getByRole('textbox', { name: 'Email address' });
-        this.password = page.getByRole('textbox', { name: 'Password' });
-        this.signInButton = page.getByRole('button', { name: 'Login' });
-        this.pageheading = page.getByText(this.headingText, {exact: true});
-    }
+  constructor(page){
+    this.page = page;
+    this.headingText = "Sign in to Delek Homes";
+    this.email = page.getByRole('textbox', { name: 'Email address' });
+    this.password = page.getByRole('textbox', { name: 'Password' });
+    this.signInButton = page.getByRole('button', { name: 'Login' });
+    this.pageheading = page.getByText(this.headingText, {exact: true});
+  }
 
 
-    async isEmailFieldVisible(){
-        const result = await this.email.isVisible();
+  async isEmailFieldVisible(){
+    const result = await this.email.isVisible();
 
-        expect(result).toBe(true)
-    }
+    expect(result).toBe(true)
+  }
 
-    async isHeadingVisible(){
-        const result = await this.pageheading.isVisible();
+  async isHeadingVisible(){
+    const result = await this.pageheading.isVisible();
 
-        expect(result).toBe(true)
-    }
+    expect(result).toBe(true)
+  }
 
   async isPasswordFieldVisible(){
     const result = await this.password.isVisible();
@@ -58,12 +59,14 @@ export class LoginPage{
 
   async assertProfilePageUrl(baseUrl){
     const pageUrl = `${baseUrl}/dashboard/user/profile`;
+
     await this.page.waitForURL(pageUrl);
     await expect(this.page).toHaveURL(pageUrl);
   }
 
   async assertLoginPageUrl(baseUrl){
     const pageUrl = `${baseUrl}/auth/login`;
+
     await this.page.waitForURL(pageUrl);
     await expect(this.page).toHaveURL(pageUrl);
   }
@@ -72,7 +75,7 @@ export class LoginPage{
     await this.isEmailFieldVisible();
     await this.isPasswordFieldVisible();
     await this.isSignInButtonVisible();
-}
+  }
 
 }
 export default LoginPage;
