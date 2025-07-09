@@ -3,6 +3,7 @@ import { validateNumberList } from './utils';
 // Challenge 1: Find the Second Largest Number
 // Write a function to find the second largest number in the array.
 
+// eslint-disable-next-line no-unused-vars
 function findSecondLargestNumber(numbers){
   if(numbers.length === 0){
     return {
