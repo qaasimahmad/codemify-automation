@@ -1,4 +1,4 @@
-const utils = require('./utils');
+import { validateNumberList } from './utils';
 
 // Challenge 1: Find the Second Largest Number
 // Write a function to find the second largest number in the array.
@@ -11,7 +11,7 @@ function findSecondLargestNumber(numbers){
     }
   }
 
-  const validatorResponse = utils.validateNumberList(numbers);
+  const validatorResponse = validateNumberList(numbers);
 
   if(!validatorResponse.success){
     return validatorResponse;

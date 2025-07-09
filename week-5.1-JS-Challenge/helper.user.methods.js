@@ -1,38 +1,39 @@
-class Helpers {
-    getUsersByStatus(response, status) {
-        const users = response.users
-            .filter((user)=> (user.role.status === status && user.role.description))
-            .map(user => user.name)
-            
-        return users;
-    }
+class Helpers{
+  getUsersByStatus(response, status){
+    const users = response.users
+      .filter((user)=> (user.role.status === status && user.role.description))
+      .map(user => user.name)
 
-    getUsersByRole(response, role, roleId) {
-        const users = response.users
-            .filter((user)=> (user.role.name === role && user.role.id === roleId))
-            .map(user => user.name)
+    return users;
+  }
 
-        return users;
-    }
+  getUsersByRole(response, role, roleId){
+    const users = response.users
+      .filter((user)=> (user.role.name === role && user.role.id === roleId))
+      .map(user => user.name)
 
-    getUsersByEmailDomain(response, domain) {
-        const users = response.users
-            .filter((user)=> (user.email.includes(domain)))
-            .map(user => user.name)
+    return users;
+  }
 
-        return users;
-    }
+  getUsersByEmailDomain(response, domain){
+    const users = response.users
+      .filter((user)=> (user.email.includes(domain)))
+      .map(user => user.name)
 
-    getUserBalanceByCurrency(response, currency) {
-        const balances = response.users
-            .filter((user)=> (user.currency === currency))
-            .map((user)=>{
-                const sanitizedBalance = Number(user.balance.replace(/[^0-9]/g, ''));
-                return sanitizedBalance;
-            })
+    return users;
+  }
 
-        return balances;
-    }
+  getUserBalanceByCurrency(response, currency){
+    const balances = response.users
+      .filter((user)=> (user.currency === currency))
+      .map((user)=>{
+        const sanitizedBalance = Number(user.balance.replace(/[^0-9]/g, ''));
+
+        return sanitizedBalance;
+      })
+
+    return balances;
+  }
 
 }
 
