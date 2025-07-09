@@ -68,7 +68,6 @@ export class LoginPage{
 
   async assertLoginPageUrl(baseUrl){
     const pageUrl = `${baseUrl}/auth/login`;
-
     await this.page.waitForURL(pageUrl);
     await expect(this.page).toHaveURL(pageUrl);
   }
