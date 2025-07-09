@@ -54,11 +54,6 @@ export class LoginPage{
     await this.signInButton.click({force: true});
   }
 
-  async signIn(successfulLoginUrl, baseUrl){
-    await this.clickSignInButton();
-    await this.assertPageUrl(successfulLoginUrl, baseUrl);
-  }
-
   async assertProfilePageUrl(baseUrl){
     const pageUrl = `${baseUrl}/dashboard/user/profile`;
 
