@@ -1,15 +1,8 @@
-/* eslint-disable no-undef */
-
 import { test } from '@playwright/test';
-import { LoginPage } from "./pages/loginPage";
-import dotenv from 'dotenv';
-import path from 'path';
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+import { LoginPage } from "../pages/loginPage";
+import config from "../../playwright.config";
 
-const baseUrl = process.env.BASE_URL || "https://dev.delekhomes.com";
-const email = process.env.EMAIL || "kasscodemify@yopmail.com";
-const password = process.env.PASSWORD || "QaasimAhmad1"
-let loginPage;
+const baseUrl = config.use.baseURL;
 
 test.beforeEach(async({page}) => {
   await page.goto(`${baseUrl}/auth/login`);
@@ -18,19 +11,16 @@ test.beforeEach(async({page}) => {
 
 test.describe('Login and Logout', ()=>{
   test('Should log in with your existing account', async({page})=>{
-    loginPage = new LoginPage(page);
-    await loginPage.assertLoginPagehasRequiredFields();
-    await loginPage.enterEmailAndPassword(email, password);
-    await loginPage.clickSignInButton();
+    const loginPage = new LoginPage(page);
 
+    await loginPage.logIn(page);
     await loginPage.assertProfilePageUrl(baseUrl);
   })
 
   test('Should log out', async({page})=>{
-    loginPage = new LoginPage(page);
-    await loginPage.assertLoginPagehasRequiredFields();
-    await loginPage.enterEmailAndPassword(email, password);
-    await loginPage.clickSignInButton();
+    const loginPage = new LoginPage(page);
+
+    await loginPage.logIn(page);
     await loginPage.assertProfilePageUrl(baseUrl);
     await loginPage.logout(baseUrl);
   })

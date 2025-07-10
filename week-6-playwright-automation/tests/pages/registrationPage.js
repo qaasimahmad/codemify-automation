@@ -1,9 +1,8 @@
 /* eslint-disable no-undef */
 import { expect } from '@playwright/test';
 import dotenv from 'dotenv';
-import path from 'path';
 import randomString from "randomstring";
-dotenv.config({ path: path.resolve(__dirname, '.env') });
+dotenv.config();
 
 export class RegistrationPage{
 
@@ -12,7 +11,6 @@ export class RegistrationPage{
    */
   constructor(page){
     this.page = page;
-    this.pageheading = page.getByRole('heading', { name: 'Get started absolutely free.' });
     this.firstName = page.getByRole('textbox', { name: 'First name' });
     this.lastName = page.getByRole('textbox', { name: 'Last name' });
     this.email = page.getByRole('textbox', { name: 'Email address' });
@@ -20,44 +18,11 @@ export class RegistrationPage{
     this.registerButton = page.getByRole('button', { name: 'Register' });
     this.realtorCheckbox = page.getByRole('checkbox', { name: 'Register as Realtor' });
     this.realtorWelcomeMessage = page.getByRole('heading', { name: 'Realtor Welcome' });
-    this.successfulRegistrationText = page.getByText('Thank you for registering');
-    this.closebtnSuccessModal = page.getByRole('button', { name: 'Close' });
-    this.headingPostRegistration = page.getByRole('heading', { name: 'Account' });
-    this.requiredLastName = page.getByText('First name required');
+    this.requiredFirstName = page.getByText('First name required');
   }
 
   generateId(){
     return randomString.generate(10);
-  }
-
-  async isPageHeadingVisible(){
-    const result = await this.pageheading.isVisible();
-
-    expect(result).toBe(true)
-  }
-
-  async isFirstNameFieldVisible(){
-    const result = await this.firstName.isVisible();
-
-    expect(result).toBe(true)
-  }
-
-  async isLastNameVisible(){
-    const result = await this.lastName.isVisible();
-
-    expect(result).toBe(true)
-  }
-
-  async isEmailFieldVisible(){
-    const result = await this.email.isVisible();
-
-    expect(result).toBe(true)
-  }
-
-  async isPasswordFieldVisible(){
-    const result = await this.password.isVisible();
-
-    expect(result).toBe(true)
   }
 
   async isRegisterBtnVisible(){
@@ -72,37 +37,15 @@ export class RegistrationPage{
     expect(result).toBe(true)
   }
 
-  async isCloseBtnFieldVisible(){
-    const result = await this.closebtnSuccessModal.isVisible();
-
-    expect(result).toBe(true)
-  }
-
-  async isSuccesseRegistrationTextVisible(){
-    const result = await this.successfulRegistrationText.isVisible();
-
-    expect(result).toBe(true)
-  }
-
   async isRealtorWelcomeMsgVisible(){
     const result = await this.realtorWelcomeMessage.isVisible();
 
     expect(result).toBe(true)
   }
 
-
-  async assertRegistrationPagehasRequiredFields(){
-    await this.isPageHeadingVisible();
-    await this.isFirstNameFieldVisible();
-    await this.isLastNameVisible();
-    await this.isEmailFieldVisible();
-    await this.isPasswordFieldVisible();
-    await this.isRegisterBtnVisible();
-  }
-
   async registerUser(){
     const email = `${this.generateId()}@yopmail.com`;
-    const password = process.env.PASSWORD || "QaasimAhmad1";
+    const password = process.env.PASSWORD;
 
     await this.isRealtorCheckBoxVisible();
     await this.realtorCheckbox.check();
@@ -110,7 +53,9 @@ export class RegistrationPage{
     await this.lastName.fill("Ahmad");
     await this.email.fill(email);
     await this.password.fill(password);
-    await this.registerButton.click({force: true});
+    await this.isRegisterBtnVisible();
+    await expect(this.registerButton).toBeEnabled();
+    await this.registerButton.click();
   }
 
   async registerUserError(){
@@ -119,7 +64,8 @@ export class RegistrationPage{
 
     await this.email.fill(email);
     await this.realtorCheckbox.check();
-    await this.registerButton.click({force: true});
+    await expect(this.registerButton).toBeEnabled();
+    await this.registerButton.click();
   }
 
   async assertProfilePageUrl(baseUrl){
