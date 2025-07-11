@@ -31,6 +31,7 @@ test.describe('registration', ()=>{
 
     await registrationPage.registerUserError();
     expect(await registrationPage.requiredFirstName.isVisible()).toBeTruthy();
+    expect(await registrationPage.requiredPassword.isVisible()).toBeTruthy();
   });
 })
 

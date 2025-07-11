@@ -19,6 +19,7 @@ export class RegistrationPage{
     this.realtorCheckbox = page.getByRole('checkbox', { name: 'Register as Realtor' });
     this.realtorWelcomeMessage = page.getByRole('heading', { name: 'Realtor Welcome' });
     this.requiredFirstName = page.getByText('First name required');
+    this.requiredPassword = page.getByText('Password is required');
   }
 
   generateId(){
