@@ -1,7 +1,6 @@
 class Helpers{
   filterMatchesByLocationAndStatus(response){
 
-
     const users = response.matches
       .filter(user=> user.locationlvl1 === "Germany" && user.status === "canceled")
       .map(user => user.matchId)
