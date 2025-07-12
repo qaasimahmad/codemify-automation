@@ -3,20 +3,18 @@
 // Write a function to find the most frequent element in the array. If there are multiple elements that appear a maximum number of times, print the first of them
 
 function mostFrequent(arr, n){
-  const freqObj = {};
+  const freqObj = new Map();
   let maxNumberOfTimes = 0;
   let mostFrequentElement = arr[ 0 ];
 
   for (let i = 0; i < n; i++){
     let el = arr[ i ];
-    if(freqObj[ el ] === undefined){
-      freqObj[ el ] = 1;
-    } else {
-      freqObj[ el ]++;
-    }
+    let count = (freqObj.get(el) || 0) + 1;
 
-    if(freqObj[ el ] > maxNumberOfTimes){
-      maxNumberOfTimes = freqObj[ el ];
+    freqObj.set(el, count);
+
+    if(count > maxNumberOfTimes){
+      maxNumberOfTimes = count;
       mostFrequentElement = el;
     }
   }
